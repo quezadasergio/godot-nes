@@ -1,0 +1,15 @@
+/*
+  Cross-Origin-Opener-Policy: same-origin
+  Cross-Origin-Embedder-Policy: require-corp
+  Cross-Origin-Resource-Policy: same-origin
+  X-Content-Type-Options: nosniff
+  Cache-Control: no-cache
+
+/*.wasm
+  Content-Type: application/wasm
+
+/bin/web/*
+  Content-Type: application/wasm
+
+/*.pck
+  Content-Type: application/octet-stream
