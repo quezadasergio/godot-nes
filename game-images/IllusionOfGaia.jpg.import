@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c01nxtm4e10sq"
-path="res://.godot/imported/ IllusionOfGaia.jpg-b5ef496dd8325f30a7d178c0566b48e1.ctex"
+uid="uid://cthudymdaxsp0"
+path="res://.godot/imported/IllusionOfGaia.jpg-49d994ed220bdbe55f55fd3ddc280ee0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://game-images/ IllusionOfGaia.jpg"
-dest_files=["res://.godot/imported/ IllusionOfGaia.jpg-b5ef496dd8325f30a7d178c0566b48e1.ctex"]
+source_file="res://game-images/IllusionOfGaia.jpg"
+dest_files=["res://.godot/imported/IllusionOfGaia.jpg-49d994ed220bdbe55f55fd3ddc280ee0.ctex"]
 
 [params]
 

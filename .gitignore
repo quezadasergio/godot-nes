@@ -28,11 +28,6 @@ custom.py
 !/bin/
 !/bin/*.gdextension
 
-# ROMs (copyrighted games must not be committed)
-/roms/*
-!/roms/.gitkeep
-!/roms/README.md
-
 # Web export output
 /build/
 
