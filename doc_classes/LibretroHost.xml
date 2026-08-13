@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="LibretroHost" inherits="Node" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+	<brief_description>
+		Libretro frontend that runs snes9x statically and exposes video, audio, save states, and SRAM to Godot.
+	</brief_description>
+	<description>
+		GDExtension node that implements Libretro callbacks and draws each frame into an [ImageTexture]. Audio is pushed to an internal [AudioStreamGenerator].
+	</description>
+</class>

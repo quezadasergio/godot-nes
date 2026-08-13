@@ -1,0 +1,437 @@
+[gd_scene load_steps=3 format=3 uid="uid://c8snesfrontend"]
+
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_main"]
+[ext_resource type="Script" path="res://scripts/touch_pad.gd" id="2_pad"]
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_main")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.071, 0.047, 0.11, 1)
+mouse_filter = 2
+
+[node name="Safe" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 28
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 28
+theme_override_constants/margin_bottom = 24
+
+[node name="Stack" type="VBoxContainer" parent="Safe"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Library" type="Control" parent="Safe/Stack"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Panel" type="PanelContainer" parent="Safe/Stack/Library"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Margin" type="MarginContainer" parent="Safe/Stack/Library/Panel"]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 20
+
+[node name="VBox" type="VBoxContainer" parent="Safe/Stack/Library/Panel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Header" type="HBoxContainer" parent="Safe/Stack/Library/Panel/Margin/VBox"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Safe/Stack/Library/Panel/Margin/VBox/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 32
+text = "Selecciona un juego"
+
+[node name="OpenRemap" type="Button" parent="Safe/Stack/Library/Panel/Margin/VBox/Header"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Mandos"
+
+[node name="OpenSettings" type="Button" parent="Safe/Stack/Library/Panel/Margin/VBox/Header"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Ajustes"
+
+[node name="Status" type="Label" parent="Safe/Stack/Library/Panel/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.608, 0.561, 0.69, 1)
+text = "Buscando juegos en roms/"
+
+[node name="Scroll" type="ScrollContainer" parent="Safe/Stack/Library/Panel/Margin/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="Roms" type="GridContainer" parent="Safe/Stack/Library/Panel/Margin/VBox/Scroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 16
+theme_override_constants/v_separation = 16
+columns = 4
+
+[node name="Credit" type="RichTextLabel" parent="Safe/Stack/Library/Panel/Margin/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+theme_override_colors/default_color = Color(0.608, 0.561, 0.69, 1)
+theme_override_colors/url_color = Color(0.357, 0.553, 0.937, 1)
+theme_override_font_sizes/normal_font_size = 14
+text = "[center]Site created by [url=https://github.com/quezadasergio]quezadasergio[/url][/center]"
+
+[node name="Settings" type="Control" parent="Safe/Stack"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Panel" type="PanelContainer" parent="Safe/Stack/Settings"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Margin" type="MarginContainer" parent="Safe/Stack/Settings/Panel"]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 20
+
+[node name="VBox" type="VBoxContainer" parent="Safe/Stack/Settings/Panel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 18
+
+[node name="Header" type="HBoxContainer" parent="Safe/Stack/Settings/Panel/Margin/VBox"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Safe/Stack/Settings/Panel/Margin/VBox/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 28
+text = "Ajustes"
+
+[node name="SettingsBack" type="Button" parent="Safe/Stack/Settings/Panel/Margin/VBox/Header"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Volver"
+
+[node name="ShaderRow" type="HBoxContainer" parent="Safe/Stack/Settings/Panel/Margin/VBox"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Safe/Stack/Settings/Panel/Margin/VBox/ShaderRow"]
+layout_mode = 2
+custom_minimum_size = Vector2(220, 0)
+text = "Shader de video"
+
+[node name="Shader" type="OptionButton" parent="Safe/Stack/Settings/Panel/Margin/VBox/ShaderRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VolumeRow" type="HBoxContainer" parent="Safe/Stack/Settings/Panel/Margin/VBox"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Safe/Stack/Settings/Panel/Margin/VBox/VolumeRow"]
+layout_mode = 2
+custom_minimum_size = Vector2(220, 0)
+text = "Volumen (dB)"
+
+[node name="Volume" type="HSlider" parent="Safe/Stack/Settings/Panel/Margin/VBox/VolumeRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = -40.0
+max_value = 6.0
+
+[node name="FFRow" type="HBoxContainer" parent="Safe/Stack/Settings/Panel/Margin/VBox"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Safe/Stack/Settings/Panel/Margin/VBox/FFRow"]
+layout_mode = 2
+custom_minimum_size = Vector2(220, 0)
+text = "Avance rápido"
+
+[node name="FastForward" type="HSlider" parent="Safe/Stack/Settings/Panel/Margin/VBox/FFRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 2.0
+max_value = 8.0
+value = 4.0
+rounded = true
+
+[node name="IntegerScale" type="CheckButton" parent="Safe/Stack/Settings/Panel/Margin/VBox"]
+layout_mode = 2
+text = "Escala entera (píxeles nítidos)"
+
+[node name="TouchPad" type="CheckButton" parent="Safe/Stack/Settings/Panel/Margin/VBox"]
+layout_mode = 2
+text = "Pad táctil en pantalla"
+
+[node name="Hint" type="Label" parent="Safe/Stack/Settings/Panel/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.608, 0.561, 0.69, 1)
+text = "Tab o Esc abre el menú (guardar, mandos, ajustes). Start+Select también. F5 / F9 guardan y cargan el slot 1."
+autowrap_mode = 3
+
+[node name="Remap" type="Control" parent="Safe/Stack"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Panel" type="PanelContainer" parent="Safe/Stack/Remap"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Margin" type="MarginContainer" parent="Safe/Stack/Remap/Panel"]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 20
+
+[node name="VBox" type="VBoxContainer" parent="Safe/Stack/Remap/Panel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Header" type="HBoxContainer" parent="Safe/Stack/Remap/Panel/Margin/VBox"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Safe/Stack/Remap/Panel/Margin/VBox/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 28
+text = "Reasignar controles"
+
+[node name="RemapBack" type="Button" parent="Safe/Stack/Remap/Panel/Margin/VBox/Header"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Volver"
+
+[node name="Scroll" type="ScrollContainer" parent="Safe/Stack/Remap/Panel/Margin/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Actions" type="VBoxContainer" parent="Safe/Stack/Remap/Panel/Margin/VBox/Scroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="Play" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Letterbox" type="ColorRect" parent="Play"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="GameView" type="TextureRect" parent="Play"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -512.0
+offset_top = -384.0
+offset_right = 512.0
+offset_bottom = 384.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 0
+texture_filter = 0
+
+[node name="TouchPad" type="Control" parent="Play"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_pad")
+
+[node name="Pause" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.05, 0.03, 0.08, 0.72)
+
+[node name="Center" type="CenterContainer" parent="Pause"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="PanelContainer" parent="Pause/Center"]
+custom_minimum_size = Vector2(520, 0)
+layout_mode = 2
+
+[node name="Margin" type="MarginContainer" parent="Pause/Center/Panel"]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 20
+
+[node name="VBox" type="VBoxContainer" parent="Pause/Center/Panel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Title" type="Label" parent="Pause/Center/Panel/Margin/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Menú rápido"
+horizontal_alignment = 1
+
+[node name="Resume" type="Button" parent="Pause/Center/Panel/Margin/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Continuar"
+
+[node name="SaveRow" type="HBoxContainer" parent="Pause/Center/Panel/Margin/VBox"]
+layout_mode = 2
+
+[node name="Save1" type="Button" parent="Pause/Center/Panel/Margin/VBox/SaveRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Guardar 1"
+
+[node name="Save2" type="Button" parent="Pause/Center/Panel/Margin/VBox/SaveRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Guardar 2"
+
+[node name="Save3" type="Button" parent="Pause/Center/Panel/Margin/VBox/SaveRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Guardar 3"
+
+[node name="LoadRow" type="HBoxContainer" parent="Pause/Center/Panel/Margin/VBox"]
+layout_mode = 2
+
+[node name="Load1" type="Button" parent="Pause/Center/Panel/Margin/VBox/LoadRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Cargar 1"
+
+[node name="Load2" type="Button" parent="Pause/Center/Panel/Margin/VBox/LoadRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Cargar 2"
+
+[node name="Load3" type="Button" parent="Pause/Center/Panel/Margin/VBox/LoadRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Cargar 3"
+
+[node name="Reset" type="Button" parent="Pause/Center/Panel/Margin/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Reset"
+
+[node name="CheatRow" type="HBoxContainer" parent="Pause/Center/Panel/Margin/VBox"]
+layout_mode = 2
+
+[node name="Cheat" type="LineEdit" parent="Pause/Center/Panel/Margin/VBox/CheatRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Cheat Game Genie / Pro Action Replay"
+
+[node name="ApplyCheat" type="Button" parent="Pause/Center/Panel/Margin/VBox/CheatRow"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Aplicar"
+
+[node name="PauseRemap" type="Button" parent="Pause/Center/Panel/Margin/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Controles"
+
+[node name="PauseSettings" type="Button" parent="Pause/Center/Panel/Margin/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Ajustes"
+
+[node name="ToLibrary" type="Button" parent="Pause/Center/Panel/Margin/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Volver a la biblioteca"
+
+[node name="Missing" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+text = "No se encontró la GDExtension LibretroHost.
+
+Compila primero:
+
+  ./build.sh macos
+
+Luego recarga el proyecto en Godot 4.7."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
