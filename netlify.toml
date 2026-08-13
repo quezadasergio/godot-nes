@@ -1,8 +1,8 @@
 # Netlify: Godot 4 HTML5/WASM + GDExtension
-# Publishes the Web export preset output (build/web).
+# Publishes the committed Godot Web export in public/.
 
 [build]
-  publish = "build/web"
+  publish = "public"
   command = "bash tools/prepare_netlify.sh"
 
 # Netlify's minifier/bundler breaks Godot's loader.

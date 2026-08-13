@@ -110,12 +110,17 @@ In Godot: **Editor → Export → Manage Export Templates** (or Export preset cu
 In Godot: **Project → Export → Web**
 
 - Enable **Extensions Support**
-- Export path: `build/web/index.html`
+- Export path: `public/index.html` (this folder is what Netlify publishes)
+
+Then:
+
+```bash
+bash tools/prepare_netlify.sh
+```
 
 ### 4. Play locally in the browser
 
 ```bash
-bash tools/prepare_netlify.sh   # copies COOP/COEP headers
 python3 tools/serve_web.py
 ```
 
@@ -124,20 +129,24 @@ Use this helper (or any server that sends COOP/COEP); opening `index.html` as a 
 
 ### 5. Deploy to Netlify
 
-```bash
-npm install -g netlify-cli
-netlify login
+Netlify clones GitHub and **does not** compile Godot. Commit the export under `public/` and push:
 
-./build.sh web
-# Export Web in Godot → build/web/index.html
+```bash
 bash tools/prepare_netlify.sh
-netlify deploy --prod --dir=build/web
+git add public/
+git commit -m "Add Godot web export for Netlify"
+git push
 ```
 
-`netlify.toml` already sets `publish = "build/web"`, disables JS minification (it breaks Godot), and sends isolation headers.
+Or deploy from your machine without waiting for CI:
 
-Do **not** add a catch-all redirect `/* → /index.html` (it breaks `.wasm` / `.pck`).  
-Building Godot + Emscripten on Netlify’s CI is not practical: export locally, then deploy `build/web`.
+```bash
+netlify deploy --prod --dir=public
+```
+
+`netlify.toml` sets `publish = "public"`, disables JS minification (it breaks Godot), and sends isolation headers.
+
+Do **not** add a catch-all redirect `/* → /index.html` (it breaks `.wasm` / `.pck`).
 
 ## Controls
 
