@@ -25,10 +25,10 @@ case "$TARGET" in
       echo "emcc is not in PATH. Activate emsdk: source emsdk_env.sh"
       exit 1
     fi
-    scons platform=web target=template_release api_version=4.7 threads=no -j"$JOBS"
+    scons platform=web target=template_release api_version=4.7 arch=wasm32 threads=no -j"$JOBS"
     ;;
   web-debug)
-    scons platform=web target=template_debug api_version=4.7 threads=no -j"$JOBS"
+    scons platform=web target=template_debug api_version=4.7 arch=wasm32 threads=no -j"$JOBS"
     ;;
   linux)
     scons platform=linux target=template_debug api_version=4.7 -j"$JOBS"

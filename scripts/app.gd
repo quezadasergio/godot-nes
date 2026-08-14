@@ -202,9 +202,7 @@ func _decode_event(data: Dictionary) -> InputEvent:
 
 func scan_games() -> void:
 	library.clear()
-	var images_by_key: Dictionary = {}
-	for image_path in _list_files(IMAGES_DIR, IMAGE_EXTENSIONS, false):
-		images_by_key[_match_key(image_path.get_file().get_basename())] = image_path
+	var images_by_key := _scan_cover_index()
 
 	for rom_path in _list_files(ROMS_DIR, ROM_EXTENSIONS, true):
 		var file_name := rom_path.get_file()
@@ -212,9 +210,10 @@ func scan_games() -> void:
 		if base_name.is_empty():
 			base_name = file_name
 		var key := _match_key(base_name)
-		var image_path := ""
-		if images_by_key.has(key):
-			image_path = String(images_by_key[key])
+		var image_path := String(images_by_key.get(key, ""))
+		# Web/PCK: DirAccess often does not list imported textures; probe by ROM basename.
+		if image_path.is_empty():
+			image_path = _find_cover_path(base_name)
 		library.append({
 			"id": key,
 			"name": _pretty_name(base_name),
@@ -227,13 +226,58 @@ func scan_games() -> void:
 	)
 
 
+func _scan_cover_index() -> Dictionary:
+	var images_by_key: Dictionary = {}
+	for image_path in _list_files(IMAGES_DIR, IMAGE_EXTENSIONS, false):
+		images_by_key[_match_key(image_path.get_file().get_basename())] = image_path
+
+	# Exported builds may only expose "*.import" sidecars under res://game-images.
+	for file_name in DirAccess.get_files_at(IMAGES_DIR):
+		var lower := String(file_name).to_lower()
+		if not lower.ends_with(".import"):
+			continue
+		var source_name := String(file_name).trim_suffix(".import")
+		if not _is_catalog_file(source_name, IMAGE_EXTENSIONS, false):
+			continue
+		var key := _match_key(source_name.get_basename())
+		if images_by_key.has(key):
+			continue
+		images_by_key[key] = IMAGES_DIR.path_join(source_name)
+	return images_by_key
+
+
+func _find_cover_path(base_name: String) -> String:
+	for ext in IMAGE_EXTENSIONS:
+		var path := IMAGES_DIR.path_join("%s.%s" % [base_name, ext])
+		if ResourceLoader.exists(path) or FileAccess.file_exists(path):
+			return path
+	return ""
+
+
+func load_cover_for_game(game_id: String, path: String = "") -> Texture2D:
+	var key := _match_key(game_id)
+	if key.is_empty() and not path.is_empty():
+		key = _match_key(path.get_file().get_basename())
+	var from_registry := CoverRegistry.texture_for(key)
+	if from_registry:
+		return from_registry
+	return load_cover(path)
+
+
 func load_cover(path: String) -> Texture2D:
 	if path.is_empty():
 		return null
+	var key := _match_key(path.get_file().get_basename())
+	var from_registry := CoverRegistry.texture_for(key)
+	if from_registry:
+		return from_registry
+	# .import sidecars remap these paths in the editor; on web the source file is absent.
 	if ResourceLoader.exists(path):
-		var loaded: Resource = load(path)
+		var loaded: Resource = ResourceLoader.load(path)
 		if loaded is Texture2D:
 			return loaded as Texture2D
+	if OS.has_feature("web"):
+		return null
 	var image := Image.new()
 	if image.load(path) == OK:
 		return ImageTexture.create_from_image(image)
