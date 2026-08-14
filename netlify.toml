@@ -1,9 +1,16 @@
 # Netlify: Godot 4 HTML5/WASM + GDExtension
-# Publishes the committed Godot Web export in public/.
+#
+# Production updates: local Godot export + CLI
+#   bash tools/prepare_netlify.sh
+#   netlify deploy --prod --dir=public
+#
+# Git pushes must NOT publish (public/ is not in git; a CI build would wipe the site).
 
 [build]
   publish = "public"
   command = "bash tools/prepare_netlify.sh"
+  # Always skip git-triggered builds (exit 0 = skip). Site is updated via CLI only.
+  ignore = "exit 0"
 
 # Netlify's minifier/bundler breaks Godot's loader.
 [build.processing]

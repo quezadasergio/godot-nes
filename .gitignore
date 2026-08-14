@@ -31,6 +31,11 @@ custom.py
 # Web export output
 /build/
 
+# Netlify publish dir: keep docs only; deploy with `netlify deploy --prod --dir=public`
+/public/**
+!/public/
+!/public/README.md
+
 # Netlify CLI
 .netlify/
 

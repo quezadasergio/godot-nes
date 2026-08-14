@@ -1,12 +1,13 @@
 # Godot Web export for Netlify
 
-Export the project here so GitHub → Netlify can publish it.
+Netlify does **not** compile Godot or Emscripten. Build locally, then deploy the folder:
 
-```text
-Godot → Project → Export → Web → public/index.html
+```bash
+./build.sh web
+# Godot → Project → Export → Web → public/index.html
+# (or: Godot --headless --path . --export-release "Web" public/index.html)
+bash tools/prepare_netlify.sh
+netlify deploy --prod --dir=public
 ```
 
-Or export to `build/web/` and run `bash tools/prepare_netlify.sh` (copies into this folder).
-
-Commit the resulting files (`index.html`, `.wasm`, `.pck`, `bin/web/`, etc.) and push.
-Netlify cannot build Godot or Emscripten in CI.
+Do not commit `index.html` / `.pck` / `.wasm` here (too large for GitHub). Only this README is tracked.

@@ -129,22 +129,14 @@ Use this helper (or any server that sends COOP/COEP); opening `index.html` as a 
 
 ### 5. Deploy to Netlify
 
-Netlify clones GitHub and **does not** compile Godot. Commit the export under `public/` and push:
+Netlify **does not** compile Godot/Emscripten, and the web `.pck` is too large for GitHub. Export locally and deploy with the CLI:
 
 ```bash
 bash tools/prepare_netlify.sh
-git add public/
-git commit -m "Add Godot web export for Netlify"
-git push
-```
-
-Or deploy from your machine without waiting for CI:
-
-```bash
 netlify deploy --prod --dir=public
 ```
 
-`netlify.toml` sets `publish = "public"`, disables JS minification (it breaks Godot), and sends isolation headers.
+`public/` build artifacts are gitignored. `netlify.toml` skips git-triggered builds (`ignore = "exit 0"`) so a push cannot wipe a CLI deploy, disables JS minification (it breaks Godot), and sends isolation headers.
 
 Do **not** add a catch-all redirect `/* → /index.html` (it breaks `.wasm` / `.pck`).
 
