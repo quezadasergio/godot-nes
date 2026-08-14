@@ -5,13 +5,16 @@ class_name CoverRegistry
 
 # UID preloads survive export (source .jpg/.png paths are not packed, only .ctex).
 const TEXTURES: Dictionary = {
+	"aladdin": preload("uid://bwa6hgk0rytih"),
 	"castlevaniaiv": preload("uid://djjkkbyvckata"),
+	"chavez": preload("uid://dkboqkuh558gk"),
 	"chronotrigger": preload("uid://nqfkinpw4kmm"),
 	"contraiii": preload("uid://dnqtkn1o6sbp8"),
 	"donkeykongcountry": preload("uid://btr6if1yxiod2"),
 	"donkeykongcountry2": preload("uid://dxs0l0bpnro1x"),
 	"donkeykongcountry3": preload("uid://cpyx1waiwsauq"),
 	"earthbound": preload("uid://dy6utgbher726"),
+	"earthwormjim_": preload("uid://1xolw7na8kvx"),
 	"fzero": preload("uid://b5ejsxc7e7j3t"),
 	"finalfantasyiii": preload("uid://cog8ol2shi4vu"),
 	"goal": preload("uid://b6q1x16bc81do"),
@@ -47,17 +50,23 @@ const TEXTURES: Dictionary = {
 	"thelegendofzeldalinktothepast": preload("uid://c1omvhabgbfvi"),
 	"worldsoccer94roadtoglory": preload("uid://bay6yjgdroq0v"),
 	"nternationalsuperstarsoccerdeluxe": preload("uid://cmnhn2ck74xgf"),
+	"superstarwars": preload("uid://beloqffq2wul8"),
+	"xmenmutantapocalypse": preload("uid://s503wxw0oj1d"),
+	"xmenvsstreetfighter": preload("uid://dcw86en17chbv"),
 }
 
 # Direct .ctex paths as runtime fallback for web/PCK loads.
 const CTEX_PATHS: Dictionary = {
+	"aladdin": "res://.godot/imported/Aladdin.jpeg-e3ffc9cf1ddee64b3316438b076e91a6.ctex",
 	"castlevaniaiv": "res://.godot/imported/CastlevaniaIV.png-1a62b716d15cc9dcdc015935ff3fce7f.ctex",
+	"chavez": "res://.godot/imported/Chavez.jpg-8ce35e5d85679fd4799082af6d7bf3d1.ctex",
 	"chronotrigger": "res://.godot/imported/ChronoTrigger.jpg-6ac1ffa080845de50edb179a2daaadc0.ctex",
 	"contraiii": "res://.godot/imported/ContraIII.webp-58822de75db6b6114a48b5d43d34b106.ctex",
 	"donkeykongcountry": "res://.godot/imported/DonkeyKongCountry.jpg-4c69408b26555e7f4870aa95e04add7a.ctex",
 	"donkeykongcountry2": "res://.godot/imported/DonkeyKongCountry2.webp-a3df8ed4a99a75a5c91795b538cb97c9.ctex",
 	"donkeykongcountry3": "res://.godot/imported/DonkeyKongCountry3.jpg-3f88b02009ec4f9b0b017d439bd22af0.ctex",
 	"earthbound": "res://.godot/imported/EarthBound.jpg-81c30f5bdf9b3a4bec47de949947ed20.ctex",
+	"earthwormjim_": "res://.godot/imported/EarthwormJim .jpg-4e76c1458426c5326bc6ae9414c40d30.ctex",
 	"fzero": "res://.godot/imported/FZero.jpg-a4e06bd287c9c045d76024457ca1c415.ctex",
 	"finalfantasyiii": "res://.godot/imported/FinalFantasyIII.jpg-a6f0037dc8c177ae7965bd57d1c633ee.ctex",
 	"goal": "res://.godot/imported/Goal.jpeg-9aea74cbbe5672541ddd0e85c9b98f73.ctex",
@@ -93,6 +102,9 @@ const CTEX_PATHS: Dictionary = {
 	"thelegendofzeldalinktothepast": "res://.godot/imported/TheLegendOfZeldaLinkToThePast.jpg-0e7e1b96b37809ac6b8c4533367455be.ctex",
 	"worldsoccer94roadtoglory": "res://.godot/imported/WorldSoccer94RoadToGlory.jpg-6a66a6114271011c3416a8cf10ae3240.ctex",
 	"nternationalsuperstarsoccerdeluxe": "res://.godot/imported/nternationalSuperstarSoccerDeluxe.jpeg-bc6a6ad50f4fc16416cf902c9162bcac.ctex",
+	"superstarwars": "res://.godot/imported/superstarwars.jpg-3f64b856aaef5deca336536474d79d84.ctex",
+	"xmenmutantapocalypse": "res://.godot/imported/xmenmutantapocalypse.jpg-dec382f9749de0f1adc0701a9774e2b8.ctex",
+	"xmenvsstreetfighter": "res://.godot/imported/xmenvsstreetfighter.png-445941314346f95643558e513eb44d97.ctex",
 }
 
 static func texture_for(key: String) -> Texture2D:
