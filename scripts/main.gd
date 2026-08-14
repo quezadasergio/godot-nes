@@ -192,7 +192,7 @@ func _game_card(entry: Dictionary, index: int) -> Button:
 	cover.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
 	cover.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
 	cover.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	var texture := App.load_cover(String(entry.get("image", "")))
+	var texture := App.load_cover_for_game(String(entry.get("id", "")), String(entry.get("image", "")))
 	if texture:
 		cover.texture = texture
 	else:

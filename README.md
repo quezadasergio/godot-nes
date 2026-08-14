@@ -2,6 +2,8 @@
 
 A Super Nintendo frontend built with **Godot 4.7**. Games run through a **C++ GDExtension** that implements the **Libretro** API and a statically linked **snes9x** core. You can play in the Godot editor (desktop) or ship to the browser (HTML5/WASM), including Netlify.
 
+**Try it online:** [https://godot-snes.netlify.app/](https://godot-snes.netlify.app/)
+
 ```
 Godot 4.7 (UI / input / audio)
    ↓

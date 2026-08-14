@@ -254,14 +254,28 @@ func _find_cover_path(base_name: String) -> String:
 	return ""
 
 
+func load_cover_for_game(game_id: String, path: String = "") -> Texture2D:
+	var key := _match_key(game_id)
+	if key.is_empty() and not path.is_empty():
+		key = _match_key(path.get_file().get_basename())
+	var from_registry := CoverRegistry.texture_for(key)
+	if from_registry:
+		return from_registry
+	return load_cover(path)
+
+
 func load_cover(path: String) -> Texture2D:
 	if path.is_empty():
 		return null
+	var key := _match_key(path.get_file().get_basename())
+	var from_registry := CoverRegistry.texture_for(key)
+	if from_registry:
+		return from_registry
+	# .import sidecars remap these paths in the editor; on web the source file is absent.
 	if ResourceLoader.exists(path):
-		var loaded: Resource = ResourceLoader.load(path, "Texture2D")
+		var loaded: Resource = ResourceLoader.load(path)
 		if loaded is Texture2D:
 			return loaded as Texture2D
-	# Desktop/editor fallback when files are loose on disk and not imported yet.
 	if OS.has_feature("web"):
 		return null
 	var image := Image.new()
