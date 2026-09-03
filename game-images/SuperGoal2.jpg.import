@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://brlu0a8v8dw3e"
-path="res://.godot/imported/SuperGoal2.png-10036e89adfe2ee98a3bee637da0a04c.ctex"
+uid="uid://gkpq3ippyhii"
+path="res://.godot/imported/SuperGoal2.jpg-ffaeb114b4e2f122ad7e6debc431930a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://game-images/SuperGoal2.png"
-dest_files=["res://.godot/imported/SuperGoal2.png-10036e89adfe2ee98a3bee637da0a04c.ctex"]
+source_file="res://game-images/SuperGoal2.jpg"
+dest_files=["res://.godot/imported/SuperGoal2.jpg-ffaeb114b4e2f122ad7e6debc431930a.ctex"]
 
 [params]
 
